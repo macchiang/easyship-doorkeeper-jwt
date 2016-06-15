@@ -9,7 +9,7 @@ Extending [Doorkeeper](https://github.com/doorkeeper-gem/doorkeeper) to support 
 Add the gem to the Gemfile
 
 ```ruby
-gem 'doorkeeper-jwt_assertion', github: alChaCC/doorkeeper-jwt_assertion, branch: 'feat/public_key_support'
+gem 'doorkeeper-jwt_assertion', github: 'alChaCC/doorkeeper-jwt_assertion', branch: 'feat/public_key_support'
 ```
 
 ## Configuration
@@ -22,12 +22,12 @@ Doorkeeper.configure do
   # enable jwt handler
   jwt_enable true
 
-	jwt_private_key Rails.root.join('config', 'keys', 'private.key')
+  jwt_private_key Rails.root.join('config', 'keys', 'private.key')
 
-	jwt_secret 'notasecret'
+  jwt_secret 'notasecret'
 
-	# Optional
-	jwt_use_issuer_as_client_id true
+  # Optional
+  jwt_use_issuer_as_client_id true
 
   # using public key as decode key
   jwt_use_application_public_key_as_key true
@@ -48,13 +48,13 @@ If the client request a token with an invalid assertion, or an expired JWT claim
 ``` ruby
 Doorkeeper.configure do
 
-	resource_owner_authenticator do
+  resource_owner_authenticator do
 
-		if jwt
-			jwt['sub'].present? and User.find_by_email(jwt['sub'])
-		end
+    if jwt
+      jwt['sub'].present? and User.find_by_email(jwt['sub'])
+    end
 
-	end
+  end
 
 end
 
