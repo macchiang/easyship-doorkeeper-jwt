@@ -1,6 +1,6 @@
 # Doorkeeper JWT Assertion
 
-Extending [Doorkeeper](https://github.com/doorkeeper-gem/doorkeeper) to support JWT Assertion grant type using a secret or a private key file.
+Extending [Doorkeeper](https://github.com/doorkeeper-gem/doorkeeper) to support JWT Assertion grant type using a *secret* or a *private key file* or *application's public key*.
 
 **This library is in alpha. Future incompatible changes may be necessary.**
 
