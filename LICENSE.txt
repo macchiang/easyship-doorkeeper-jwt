@@ -1,4 +1,4 @@
-Copyright (c) 2015 Omac
+Copyright (c) 2016 Omac, Aloha
 
 MIT License
 
