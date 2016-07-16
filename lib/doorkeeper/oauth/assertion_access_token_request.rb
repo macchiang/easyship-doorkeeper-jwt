@@ -137,7 +137,7 @@ module Doorkeeper
         #
         def create_token
           expires_in = Authorization::Token.access_token_expires_in(configuration, client)
-          @access_token = AccessToken.find_or_create_for(client, resource_owner.id, scopes, expires_in, false)
+          @access_token = AccessToken.find_or_create_for(client, resource_owner.id, scopes, expires_in, configuration.refresh_token_enabled?)
         end
     end
   end
