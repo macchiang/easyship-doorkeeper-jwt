@@ -137,7 +137,8 @@ module Doorkeeper
         # @see https://tools.ietf.org/html/draft-ietf-oauth-assertions-18#section-4.1
         #
         def create_token
-          expires_in = Authorization::Token.access_token_expires_in(configuration, client)
+          client_requested_expires_in = server.jwt['exp'].to_i - server.jwt['iat'].to_i
+          expires_in = (client_requested_expires_in > 0 && client_requested_expires_in <= 7200) ? client_requested_expires_in : Authorization::Token.access_token_expires_in(configuration, client)
           @access_token = AccessToken.find_or_create_for(client, resource_owner.id, scopes, expires_in, configuration.refresh_token_enabled?)
         end
     end
