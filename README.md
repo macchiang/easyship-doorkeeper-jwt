@@ -9,7 +9,7 @@ Extending [Doorkeeper](https://github.com/doorkeeper-gem/doorkeeper) to support 
 Add the gem to the Gemfile
 
 ```ruby
-gem 'doorkeeper-jwt_assertion', github: 'alChaCC/doorkeeper-jwt_assertion', branch: 'feat/public_key_support'
+gem 'easyship-doorkeeper-jwt', require: 'doorkeeper/jwt_assertion'
 ```
 
 ## Configuration
