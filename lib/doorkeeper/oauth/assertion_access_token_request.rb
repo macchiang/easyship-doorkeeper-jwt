@@ -68,14 +68,8 @@ module Doorkeeper
         if configuration.jwt_use_application_public_key_as_key
           payload, header = JWT.decode(assertion, nil, false)
           raise StandardError.new('App ID is not correct') unless OAuth::Client.find(payload['iss']).present?
-          case header['alg']
-          when 'HS256'
-            api_secret = OAuth::Client.find(payload['iss']).application.secret
-            payload, header = JWT.decode(assertion, api_secret, true, { algorithm: header['alg'] })
-          when 'RS256'
-            public_key = OAuth::Client.find(payload['iss']).application.public_key
-            payload, header = JWT.decode(assertion, OpenSSL::PKey::RSA.new(public_key), true, { algorithm: header['alg'] })
-          end
+          public_key = OAuth::Client.find(payload['iss']).application.public_key
+          payload, header = JWT.decode(assertion, OpenSSL::PKey::RSA.new(public_key), true, { algorithm: header['alg'] })
         else
           payload, header = JWT.decode(assertion, configuration.jwt_key)
         end
