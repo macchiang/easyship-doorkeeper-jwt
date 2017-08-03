@@ -70,3 +70,13 @@ module Doorkeeper
     end
   end
 end
+
+module Doorkeeper
+  module Easyship
+    class TokenGenerator
+      def self.generate(options = {})
+        "#{::Rails.env[0..3]}_" + Base64.strict_encode64(OpenSSL::HMAC.digest(OpenSSL::Digest.new('sha256'), SecureRandom.hex, options.to_s))
+      end
+    end
+  end
+end

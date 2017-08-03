@@ -1,4 +1,4 @@
 source 'https://rubygems.org'
 
-# Specify your gem's dependencies in doorkeeper-jwt_assertion.gemspec
+# Specify your gem's dependencies in doorkeeper-doorkeeper-jwt.gemspec
 gemspec
